@@ -17,7 +17,7 @@ OBJS =	$(SRC:.c=.o)
 INCLUDE = -L ./libft -lft
 
 $(NAME):$(OBJS)
-	make -c $(LIBFT_DIR)
+	make -C $(LIBFT_DIR)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCLUDE)
 
 # Default target for compilation
