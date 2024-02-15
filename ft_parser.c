@@ -6,36 +6,59 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:34:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2024/02/08 23:29:21 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2024/02/15 21:02:49 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ft_checker(char *args)
+int		ft_checker(char **args, int size)
 {
 	int	i;
 
-	i = ft_atoi(args);
+	i = 1;
+	while (i <= size)
+	{
+		while (*args[i] != '\0')
+		{
+			if (ft_isdigit(*args[i]) == 0)
+				return (0);
+			*args[i]++;
+		}
+		i++;
+	}
+	return (i);
+}
+
+int		*ft_transform(char **args, int size)
+{
+	int	i;
+	int	*int_lst;
+
+	i = 1;
+	while (i <= size)
+	{
+		int_lst[i] = ft_atoi(args[i]);
+		i++;
+	}
 	return (i);
 }
 
 void	ft_parser(char **args, t_list **stack, int size)
 {
 	int		i;
-	char	*cpy_arg;
 	t_list	*stack_member;
-	int		checker;
+	int		*int_lst;
 
 	i = 1;
-	while (i <= size)
+	if (ft_checker(args, size) != 0);
 	{
-		cpy_arg = ft_strdup(args[i++]);
-		checker = ft_checker(cpy_arg);
-		if (checker)
+		int_lst = ft_transform(args, size);
+		while (i <= size)
 		{
-			stack_member = ft_lstnew((void *)cpy_arg);
+			stack_member = ft_lstnew((void *)int_lst[i]);
 			ft_lstadd_back(stack, stack_member);
+			i++;
 		}
 	}
 }
