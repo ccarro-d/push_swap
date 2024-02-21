@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:34:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2024/02/15 21:02:49 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2024/02/21 21:59:24 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,12 @@ int		ft_checker(char **args, int size)
 int		*ft_transform(char **args, int size)
 {
 	int	i;
-	int	*int_lst;
+	int	*int_lst; // RESERVAR MEMORIA?
 
 	i = 1;
+	j = 0;
 	while (i <= size)
-	{
-		int_lst[i] = ft_atoi(args[i]);
-		i++;
-	}
+		int_lst[j++] = ft_atoi(args[i++]);
 	return (i);
 }
 

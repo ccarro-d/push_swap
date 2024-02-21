@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 20:31:58 by ccarro-d          #+#    #+#             */
-/*   Updated: 2024/02/12 19:24:31 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2024/02/21 21:53:46 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,20 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+/*
+ESTRUCTURAS ENLAZADAS DE ALEX
+typedef struct s_num
+{
+	int		num;
+}	t_num;
+
+t_num	number;
+number->num = 7;
+nodo = ft_lstnew(number);
+ft_lstadd_back(head, nodo);
+nodo->number->num;*/
+
 
 //FUNCTIONS
 int		ft_isalpha(int c);
