@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:34:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2024/02/21 21:59:24 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2024/02/22 22:01:25 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_checker(char **args, int size)
 		{
 			if (ft_isdigit(*args[i]) == 0)
 				return (0);
-			*args[i]++;
+			args[i]++;
 		}
 		i++;
 	}
@@ -33,13 +33,17 @@ int		ft_checker(char **args, int size)
 int		*ft_transform(char **args, int size)
 {
 	int	i;
-	int	*int_lst; // RESERVAR MEMORIA?
+	int	j;
+	int	*int_lst;
 
-	i = 1;
-	j = 0;
-	while (i <= size)
-		int_lst[j++] = ft_atoi(args[i++]);
-	return (i);
+	i = 0;
+	j = 1;
+	int_lst = (int *)ft_calloc(size, sizeof(int));
+	if (!int_lst)
+		return (0);
+	while (i < size)
+		int_lst[i++] = ft_atoi(args[j++]);
+	return (int_lst);
 }
 
 void	ft_parser(char **args, t_list **stack, int size)
@@ -48,13 +52,15 @@ void	ft_parser(char **args, t_list **stack, int size)
 	t_list	*stack_member;
 	int		*int_lst;
 
-	i = 1;
-	if (ft_checker(args, size) != 0);
+	i = 0;
+	if (ft_checker(args, size) != 0)
 	{
 		int_lst = ft_transform(args, size);
-		while (i <= size)
+		if (!int_lst)
+			return;
+		while (i < size)
 		{
-			stack_member = ft_lstnew((void *)int_lst[i]);
+			stack_member = ft_lstnew(&int_lst[i]);
 			ft_lstadd_back(stack, stack_member);
 			i++;
 		}

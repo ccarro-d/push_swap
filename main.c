@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2024/02/15 20:03:36 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2024/02/22 22:10:28 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_list(t_list *lst)
 	lst_size = ft_lstsize(lst);
 	while (lst_size > 0)
 	{
-		printf("%s\n", aux->content);
+		printf("%d\n", *((int *)(aux->content)));
 		aux=aux->next;
 		lst_size--;
 	}
@@ -44,6 +44,4 @@ int	main (int argc, char **argv)
 		return (0);
 	else
 		print_list(stack_a);
-		
-		
 }
