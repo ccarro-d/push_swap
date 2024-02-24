@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:32:24 by ccarro-d          #+#    #+#             */
-/*   Updated: 2024/02/22 21:28:12 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2024/02/24 14:51:41 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,17 @@
 #include<limits.h>
 #include "libft/libft.h"
 
+typedef struct s_data
+{
+	t_list	*stack_a;
+	t_list	*stack_b;
+	int		size_a;
+	int		size_b;
+}	t_data;
+
 void	ft_parser(char **args, t_list **stack, int size);
 int		*ft_transform(char **args, int size);
 int		ft_checker(char **args, int size);
-void	print_list(t_list *lst);
+void	print_list(void *nodo);
 
 #endif

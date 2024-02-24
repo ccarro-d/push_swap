@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:34:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2024/02/22 22:01:25 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2024/02/24 14:02:55 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 int		ft_checker(char **args, int size)
 {
 	int	i;
+	int	j;
 
 	i = 1;
+	j = 0;
 	while (i <= size)
 	{
-		while (*args[i] != '\0')
+		while (args[i][j] != '\0')
 		{
-			if (ft_isdigit(*args[i]) == 0)
+			if (ft_isdigit(args[i][j]) == 0)
 				return (0);
-			args[i]++;
+			j++;
 		}
 		i++;
 	}
@@ -42,16 +44,20 @@ int		*ft_transform(char **args, int size)
 	if (!int_lst)
 		return (0);
 	while (i < size)
-		int_lst[i++] = ft_atoi(args[j++]);
+	{
+		int_lst[i] = ft_atoi(args[j]);
+		i++;
+		j++;
+		
+	}
 	return (int_lst);
 }
 
 void	ft_parser(char **args, t_list **stack, int size)
 {
-	int		i;
+	int		i = 1;
 	t_list	*stack_member;
 	int		*int_lst;
-
 	i = 0;
 	if (ft_checker(args, size) != 0)
 	{
