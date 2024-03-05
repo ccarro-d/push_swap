@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2024/02/24 14:51:29 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:37:21 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,14 @@ void	print_list(void *nodo)
 int	main (int argc, char **argv)
 {
 	t_data	data;
-	int		args_num;
 	int		lst_size;
 	
-	args_num = argc - 1; 
+	data.size_a = argc - 1; 
 	if (argc <= 1)
 		return (0);
-	ft_parser(argv, &data.stack_a, args_num);
+	ft_parser(argv, &data.stack_a, data.size_a);
 	lst_size = ft_lstsize(data.stack_a);
-	if (lst_size != args_num)
+	if (lst_size != data.size_a)
 		return (0);
 	else
 		ft_lstiter(data.stack_a, print_list);
