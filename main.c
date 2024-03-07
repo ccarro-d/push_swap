@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2024/03/05 19:37:21 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2024/03/07 23:00:54 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_list(void *nodo)
 {
-	printf("%d\n", *((int *)nodo));
+	printf(BHGRN"%d\n"END, *((int *)nodo));
 }
 
 
