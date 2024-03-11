@@ -6,16 +6,87 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:34:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2024/03/07 22:43:16 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2024/03/11 22:07:13 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_args_checker(char **args, int size)
+size_t	ft_arglen(char **s)
 {
 	int	i;
-	int	j;
+
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	return (i);
+}
+
+char	**ft_argjoin(char **s1, char **s2)
+{
+	char	**str;
+	int		i;
+	int		j;
+
+	if (!s1)
+		s1 = (char **)ft_calloc(1, sizeof(char *));
+	if (!s1 || !s2)
+		return (0);
+	str = (char **)ft_calloc(ft_arglen(s1) + ft_arglen(s2) + 1, sizeof(char *));
+	if (!str)
+	{
+		free (s1);
+		free (s2);
+		return (0);
+	}
+	i = 0;
+	j = 0;
+	while (s1[i] != '\0')
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		str[i + j] = s2[j];
+		j++;
+	}
+	free(s1);
+	return (str);
+}
+
+char	**ft_split_args(char **args, int size)
+{
+	int		i;
+	char	**cpy_args;
+	char	**aux;
+
+	i = 0;
+	while (i < size)
+	{
+		if (ft_strchr(args[i], ' '))
+		{
+			aux = ft_split(args[i], ' ');
+			cpy_args = ft_argjoin(cpy_args, aux);
+			free (aux);
+		}
+		else
+			cpy_args = ft_argjoin(cpy_args, &args[i]);
+		if (!cpy_args)
+			return (NULL);
+		i++;
+	}
+	if (*cpy_args)
+		return (cpy_args);
+	return (args);
+}
+
+int	ft_args_checker(char **args, int size)
+{
+	int		i;
+	int		j;
 
 	i = 1;
 	j = 0;
@@ -95,16 +166,21 @@ int	*ft_transform(char **args, int size)
 void	ft_parser(char **args, t_list **stack, int size)
 {
 	int		i;
+	char	**cpy_args;
 	t_list	*stack_member;
 	int		*int_lst;
 
-	i = 1;
 	i = 0;
-	if (ft_args_checker(args, size) != 0)
+	cpy_args = ft_split_args(args, size);
+	if (!cpy_args)
+		return;
+	if (cpy_args != args)
+		size = ft_arglen(cpy_args);
+	if (ft_args_checker(cpy_args, size) != 0)
 	{
-		int_lst = ft_transform(args, size);
+		int_lst = ft_transform(cpy_args, size);
 		if (!int_lst)
-			return ;
+			return (free(cpy_args));
 		if (ft_sort_checker(int_lst, size) == 0)
 			return ;
 		while (i < size)
@@ -114,4 +190,5 @@ void	ft_parser(char **args, t_list **stack, int size)
 			i++;
 		}
 	}
+	return (free(cpy_args));
 }
