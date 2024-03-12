@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:34:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2024/03/11 22:07:13 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2024/03/12 22:02:32 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ size_t	ft_arglen(char **s)
 
 	i = 0;
 	while (s[i])
-	{
 		i++;
-	}
 	return (i);
 }
 
@@ -29,21 +27,18 @@ char	**ft_argjoin(char **s1, char **s2)
 	char	**str;
 	int		i;
 	int		j;
-
+	printf("Entra en el join de argumentos\n");
+		getchar();
 	if (!s1)
 		s1 = (char **)ft_calloc(1, sizeof(char *));
 	if (!s1 || !s2)
 		return (0);
 	str = (char **)ft_calloc(ft_arglen(s1) + ft_arglen(s2) + 1, sizeof(char *));
 	if (!str)
-	{
-		free (s1);
-		free (s2);
 		return (0);
-	}
 	i = 0;
 	j = 0;
-	while (s1[i] != '\0')
+	while (s1[i] != NULL)
 	{
 		str[i] = s1[i];
 		i++;
@@ -60,27 +55,75 @@ char	**ft_argjoin(char **s1, char **s2)
 char	**ft_split_args(char **args, int size)
 {
 	int		i;
+	int		j; // solo se usa para printear en el debug
+	int		k; // solo se usa para printear en el debug
 	char	**cpy_args;
+	char	**join_args = NULL;
 	char	**aux;
-
-	i = 0;
-	while (i < size)
+	printf("Entra en el split de argumentos\n");
+	getchar();
+	cpy_args = args;
+	i = 1;
+	while (i <= size)
 	{
-		if (ft_strchr(args[i], ' '))
+		printf("cpy_args en i=%i es '%s'\n", i, cpy_args[i]);
+		getchar();
+		printf("bucle argjoin en i = %i\n", i);
+			getchar();
+		if (ft_strchr(cpy_args[i], ' '))
 		{
-			aux = ft_split(args[i], ' ');
-			cpy_args = ft_argjoin(cpy_args, aux);
+			printf("El argumento %i es problemático\n", i);
+			getchar();
+			join_args = NULL;
+			aux = ft_split(cpy_args[i], ' ');
+			if (!aux)
+				return (NULL);
+			j = ft_arglen(aux);
+			printf("split en %i argumentos\n", j);
+				getchar();
+			printf("Hace split en uno de los argumentos\n");
+				getchar();
+			k = 0;
+			while (k < j)
+			{
+				printf("argumentos spliteados %s\n", aux[k]);
+				k++;
+			}
+			join_args = ft_argjoin(join_args, aux);
+			j = ft_arglen(join_args);
+			printf("%i argumentos joineados\n", j);
+				getchar();
+			k = 0;
+			while (k < j)
+			{
+				printf("argumentos spliteados y joineados %s\n", join_args[k]);
+				k++;
+			}
+			// Se detecta aquí un problema en el join de los argumentos >>> SEGUIR POR AQUÍ
 			free (aux);
 		}
 		else
-			cpy_args = ft_argjoin(cpy_args, &args[i]);
-		if (!cpy_args)
+		{
+			printf("El argumento nº %i (='%s') no es problemático\n", i, cpy_args[i]);
+			getchar();
+			join_args = ft_argjoin(join_args, &cpy_args[i]);
+			printf("joinargs en i = %i hecho\n", i);
+			getchar();
+		}
+		if (!join_args)
 			return (NULL);
 		i++;
 	}
-	if (*cpy_args)
-		return (cpy_args);
-	return (args);
+	printf("sale del bucle argjoin\n");
+	getchar();
+	j = 0;
+	while (i < size)
+	{
+		printf("joinargs en j=%i es %s", j, join_args[j]);
+		getchar();
+		j++;
+	}
+	return (join_args);
 }
 
 int	ft_args_checker(char **args, int size)
@@ -169,9 +212,12 @@ void	ft_parser(char **args, t_list **stack, int size)
 	char	**cpy_args;
 	t_list	*stack_member;
 	int		*int_lst;
-
+	
+	printf("Entra en el parser\n");
+	getchar();
 	i = 0;
 	cpy_args = ft_split_args(args, size);
+	//cpy_args = args;
 	if (!cpy_args)
 		return;
 	if (cpy_args != args)
@@ -191,4 +237,5 @@ void	ft_parser(char **args, t_list **stack, int size)
 		}
 	}
 	return (free(cpy_args));
+	//return ;
 }

@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2024/03/07 23:00:54 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2024/03/12 20:33:35 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ void	print_list(void *nodo)
 
 int	main (int argc, char **argv)
 {
+	printf("Entra en el main()\n");
+	getchar();
 	t_data	data;
 	int		lst_size;
-	
 	data.size_a = argc - 1; 
 	if (argc <= 1)
 		return (0);
