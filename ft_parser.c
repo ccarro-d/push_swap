@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:34:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2024/03/12 22:02:32 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2024/04/04 20:40:00 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	**ft_split_args(char **args, int size)
 	int		i;
 	int		j; // solo se usa para printear en el debug
 	int		k; // solo se usa para printear en el debug
-	char	**cpy_args;
+	char	**cpy_args = NULL;
 	char	**join_args = NULL;
 	char	**aux;
 	printf("Entra en el split de argumentos\n");
@@ -107,17 +107,23 @@ char	**ft_split_args(char **args, int size)
 			printf("El argumento nº %i (='%s') no es problemático\n", i, cpy_args[i]);
 			getchar();
 			join_args = ft_argjoin(join_args, &cpy_args[i]);
-			printf("joinargs en i = %i hecho\n", i);
-			getchar();
+			k = 0;
+			while (k < i)
+			{
+				printf("joinargs en i = %i y k = %i es >>> %s\n", i, k, join_args[k]);
+				getchar();
+				k++;
+			}
 		}
 		if (!join_args)
-			return (NULL);
+			return NULL;
 		i++;
 	}
+	join_args[i-1] = "\0";
 	printf("sale del bucle argjoin\n");
 	getchar();
 	j = 0;
-	while (i < size)
+	while (j < size)
 	{
 		printf("joinargs en j=%i es %s", j, join_args[j]);
 		getchar();
