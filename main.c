@@ -20,10 +20,10 @@ void	print_list(void *nodo)
 
 int	main (int argc, char **argv)
 {
-	printf("Entra en el main()\n");
-	getchar();
 	t_data	data;
 	int		lst_size;
+
+	data.stack_a = NULL;
 	data.size_a = argc - 1; 
 	if (argc <= 1)
 		return (0);
