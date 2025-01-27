@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:32:24 by ccarro-d          #+#    #+#             */
-/*   Updated: 2024/03/07 21:11:24 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2025/01/27 08:40:30 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,26 @@ typedef struct s_data
 	int		size_b;
 }	t_data;
 
-void	ft_parser(char **args, t_list **stack, int size);
+int		*handle_input (char **args, int *size, int *int_lst);
+int		*ft_parser(char **args, int *size, int *int_lst);
+int		*ft_parse_single(char **args, int *int_lst, int *size);
 int		*ft_transform(char **args, int size);
+int		ft_sort_checker(int *int_lst, int size);
+int		ft_repeat_checker(int *int_lst, int size, int nbr);
 int		ft_args_checker(char **args, int size);
+void	fill_stack(int *int_lst, t_list **stack, int size);
 void	print_list(void *nodo);
+//Operations
+void	sa(t_list **stack_a);
+void	sb(t_list **stack_b);
+void	ss(t_list **stack_a, t_list **stack_b);
+void    pa(t_list **stack_a, t_list **stack_b);
+void    pb(t_list **stack_a, t_list **stack_b);
+void    ra(t_list **stack_a);
+void    rb(t_list **stack_b);
+void    rr(t_list **stack_a, t_list **stack_b);
+void    rra(t_list **stack_a);
+void    rrb(t_list **stack_b);
+void    rrr(t_list **stack_a, t_list **stack_b);
 
 #endif

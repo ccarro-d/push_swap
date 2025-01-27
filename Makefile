@@ -9,7 +9,8 @@ LIBFT_DIR = libft/
 SRC_DIR = src/
 
 # Sources
-SRC = ft_parser.c main.c
+SRC = ft_parser.c main.c swap_push_operations.c rotate_operations.c \
+	  reverse_operations.c
 
 OBJS =	$(SRC:.c=.o)
 
