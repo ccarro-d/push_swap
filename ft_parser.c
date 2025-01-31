@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:34:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/01/31 12:22:25 by cesar            ###   ########.fr       */
+/*   Updated: 2025/01/31 15:22:53 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ int	ft_repeat_checker(int *int_lst, int size, int nbr)
 
 int	*ft_transform(char **args, int size)
 {
-	int	i;
-	int	j;
-	int	*int_lst;
-	int	nbr;
+	int			i;
+	int			j;
+	int			*int_lst;
+	long long	nbr;
 
 	i = 0;
 	j = 0;
@@ -109,7 +109,7 @@ int	*ft_transform(char **args, int size)
 		return (0);
 	while (i < size)
 	{
-		// Comprobar antes de añadir al array si el número no es int o ya está
+		// TODO Comprobar antes de añadir al array si el número no es int o ya está
 		nbr = ft_atoi(args[i]);
 		if (nbr < -2147483648 || nbr > 2147483647
 			|| ft_repeat_checker(int_lst, j, nbr) == 0)
@@ -118,7 +118,7 @@ int	*ft_transform(char **args, int size)
 			return (0);
 		}
 		// Añadir número al array
-		printf("nbr = %d\n", nbr);
+		printf("nbr = %lld\n", nbr);
 		int_lst[j] = nbr;
 		i++;
 		j++;

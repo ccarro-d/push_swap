@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:32:24 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/01/29 01:38:50 by cesar            ###   ########.fr       */
+/*   Updated: 2025/01/31 15:22:48 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_data
 	int		size_a;
 }	t_data;
 
+// Parser
 int		*handle_input (char **args, int *size, int *int_lst);
 int		*ft_parser(char **args, int *size, int *int_lst);
 int		*ft_parse_single(char **args, int *int_lst, int *size);
@@ -46,7 +47,7 @@ int		ft_sort_checker(int *int_lst, int size);
 int		ft_repeat_checker(int *int_lst, int size, int nbr);
 int		ft_args_checker(char **args, int size);
 void	fill_stack(int *int_lst, t_list **stack, int size);
-void	print_list(void *nodo);
+void	print_list(void *nodo); // comentar eventualmente
 //Operations
 void	sa(t_list **stack_a);
 void	sb(t_list **stack_b);
