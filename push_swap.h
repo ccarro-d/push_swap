@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:32:24 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/01/27 08:40:30 by cesar            ###   ########.fr       */
+/*   Updated: 2025/01/29 01:38:50 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_data
 	t_list	*stack_a;
 	t_list	*stack_b;
 	int		size_a;
-	int		size_b;
 }	t_data;
 
 int		*handle_input (char **args, int *size, int *int_lst);
@@ -61,4 +60,9 @@ void    rra(t_list **stack_a);
 void    rrb(t_list **stack_b);
 void    rrr(t_list **stack_a, t_list **stack_b);
 
+//Push_swap
+void	push_swap(t_list **stack_a, int size_a, t_list **stack_b);
+void	sort_three(t_list **stack_a);
+int    find_min_index(t_list **stack_a);
+void    sort_four_five(t_list **stack_a, int size_a, t_list **stack_b);
 #endif

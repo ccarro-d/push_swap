@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/01/27 08:40:49 by cesar            ###   ########.fr       */
+/*   Updated: 2025/01/31 12:22:36 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void	fill_stack(int *int_lst, t_list **stack, int size)
 	i = 0;
 	while (i < size)
 	{
-		int *value = malloc(sizeof(int)); //// aqui
+		int *value = malloc(sizeof(int));
 		if (!value)
 		{
     		free(int_lst);
     		return ;
 		}
 		*value = int_lst[i];
-		stack_member = ft_lstnew(value); //// aqui
+		stack_member = ft_lstnew(value); // ¿Habría que castear value como void?
 		//stack_member = ft_lstnew(&int_lst[i]);
 		if (!stack_member)
 		{
@@ -103,7 +103,9 @@ int	main (int argc, char **argv)
 	write(1, "\n", 2);
 	ra(&data.stack_a);
 	ft_lstiter(data.stack_a, print_list);*/
+	printf("push_swap\n");
 	push_swap(&data.stack_a, data.size_a, &data.stack_b);
+	ft_lstiter(data.stack_a, print_list);
 	//Fin del programa
 	free_stack(&data.stack_a);
 	return (0);
