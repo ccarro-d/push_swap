@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:32:24 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/01/31 20:41:26 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/01 14:29:20 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # define BHMAG "\e[1;95m"
 # define BHCYN "\e[1;96m"
 # define BHWHT "\e[1;97m"
-# define END   "\e[0m"
+//# define END   "\e[0m"
+# define END   "\x1b[0m"
 
 #include<unistd.h>
 #include<stdio.h>

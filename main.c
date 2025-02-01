@@ -3,19 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/01/31 20:39:52 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/01 15:15:17 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_list(void *nodo)
+/*void	print_list(void *nodo) // comentar
 {
 	printf(BHGRN"%d\n"END, *((int *)nodo));
-}
+	(void)nodo;
+	return;
+}*/
+
 int	*handle_input (char **args, int *size, int *int_lst)
 {
 	if (*size < 1)
@@ -43,7 +46,6 @@ void	fill_stack(int *int_lst, t_list **stack, int size)
 		}
 		*value = int_lst[i];
 		stack_member = ft_lstnew(value); // ¿Habría que castear value como void?
-		//stack_member = ft_lstnew(&int_lst[i]);
 		if (!stack_member)
 		{
 			free (int_lst);
@@ -55,6 +57,7 @@ void	fill_stack(int *int_lst, t_list **stack, int size)
 	free (int_lst);
 	return;
 }
+
 void	free_stack(t_list **stack)
 {
 	t_list *tmp;
@@ -64,49 +67,43 @@ void	free_stack(t_list **stack)
 		free ((*stack)->content);
 		free(*stack);
 		*stack = tmp;
-		}
+	}
+	// ¿No hay que hacer "free (stack)"?
+	// ¿No hay qye hacer manejo de errores si "!stack" o "!*stack"?
 }
 
 int	main (int argc, char **argv)
 {
-	printf("init main\n");
-	fflush(stdout);
 	t_data	data;
 	int		*int_lst;
-	int		lst_size;
+	int		lst_size; // comentar?
 	int_lst = NULL;
 	data.stack_a = NULL;
 	data.size_a = argc - 1; 
-	printf("data.size_a = %d\n", data.size_a);
 	int_lst = handle_input(argv, &data.size_a, int_lst);
 	if (!int_lst)
-		return 0;
+	{
+		write(2, "Error\n", 6);
+		return 1;
+	}
 	fill_stack (int_lst, &data.stack_a, data.size_a);
 	if (!data.stack_a)
-		return (0);
-	/* Print node content
-	t_list *tmp = data.stack_a;
-	while (tmp)
 	{
-		printf("Node content: %d\n", *(int *)(tmp->content));
-		tmp = tmp->next;
-	} */
-	lst_size = ft_lstsize(data.stack_a);
-	printf("lst_size = %d\n", lst_size);
-	printf("data_size = %d\n", data.size_a);
-	//printf("data-stack_a->content = %d\n", *(int *)data.stack_a->content);
+		write(2, "Error\n", 6);
+		return 1;
+	}
+	lst_size = ft_lstsize(data.stack_a); // comentar?
 	if (lst_size != data.size_a)
-		return (0);
-	else
-		ft_lstiter(data.stack_a, print_list);
-	/*Probando operaciones
-	write(1, "\n", 2);
-	ra(&data.stack_a);
-	ft_lstiter(data.stack_a, print_list);*/
-	printf(BHMAG"\nPUSH_SWAP\n\n"END);
+	{
+		write(2, "Error\n", 6);
+		return 1;
+	}
+	/*else // comentar?
+		ft_lstiter(data.stack_a, print_list);*/
+	//printf(BHMAG"\nPUSH_SWAP\n\n"END); //comentar
 	push_swap(&data.stack_a, data.size_a, &data.stack_b);
-	ft_lstiter(data.stack_a, print_list);
-	//Fin del programa
+	//write(1, "\n", 1); // comentar
+	//ft_lstiter(data.stack_a, print_list); //comentar
 	free_stack(&data.stack_a);
 	return (0);
 }

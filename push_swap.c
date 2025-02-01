@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:36:04 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/01 12:06:34 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/01 15:06:20 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void    sort_four_five(t_list **stack_a, int size_a, t_list **stack_b)
         pa(stack_a, stack_b);
     return;
 }
-void    sort_one_hundred(t_list **stack_a, int size_a, t_list **stack_b)
+/*void    sort_one_hundred(t_list **stack_a, int size_a, t_list **stack_b)
 {
     int *array;
     int chunk_size;
@@ -91,7 +91,7 @@ void    sort_one_hundred(t_list **stack_a, int size_a, t_list **stack_b)
     }
     
 
-}
+}*/
 
 void	push_swap(t_list **stack_a, int size_a, t_list **stack_b)
 {
@@ -101,75 +101,11 @@ void	push_swap(t_list **stack_a, int size_a, t_list **stack_b)
         sort_three(stack_a);
     else if (size_a == 4 || size_a == 5)
         sort_four_five(stack_a, size_a, stack_b);
-    /*El algoritmo de la burbuja sería mejor que los chunks para 6-20 numeros?
-    else if (stack_a >=6 && stack_a <= 20)
-        sort_twenty(stack_a, stack_b);*/
-    else if (stack_a <= 100) //Algoritmo chunks
-        sort_one_hundred(stack_a, size_a, stack_b);
+    /*else if (stack_a <= 100) //Algoritmo chunks
+        sort_one_hundred(stack_a, size_a, stack_b);*/
     // ¿Podríamos usar los chunks hasta 500?
     /*else if (stack_a <= 500) // Algoritmo radix
         sort_five_hundred(stack_a, stack_b);*/
     else
         return;
 }
-/*
-//Posibles combinaciones
-1   2   2   3   3
-3   1   3   2   1
-2   3   1   1   2
-
-
-
-//Caso 1
-3
-2
-1
-
-2          ra
-1
-3
-
-1          sa
-2
-3
-
-//Caso 2
-3
-1
-2
-
-1          ra
-2
-3
-
-//Caso 3
-2
-1
-3
-
-1         sa
-2
-3
-
-// Caso 4
-2
-3
-1
-
-1           rra
-2
-3
-
-//Caso 5
-1
-3
-2
-
-2           rra
-1
-3
-
-1           sa
-2
-3
-*/

@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:34:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/01/31 15:22:53 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2025/02/01 15:03:56 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,12 @@
 
 int *ft_parse_single(char **args, int *int_lst, int *size)
 {
-	char 	*to_split;
 	char	**splitted;
 	int		i;
 
 	if (!args || !*args || **args == '\0')
 		return (NULL);
-	to_split = ft_strtrim(*args, " ");
-	if (!to_split)
-		return (NULL);
-	splitted = ft_split(to_split, ' ');
-	free (to_split);
+	splitted = ft_split(*args, ' ');
 	if (!splitted)
 		return (NULL);
 	while (splitted[*size])
@@ -44,14 +39,12 @@ int	ft_args_checker(char **args, int size)
 	int	i;
 	int	j;
 	i = 0;
-	printf("init args_checker\n");
-	fflush(stdout);
 	while (i < size)
 	{
 		j = 0;
 		while (args[i][j] != '\0')
 		{
-			while (args[i][j] == '-' || args[i][j] == '+')
+			if (args[i][j] == '-' || args[i][j] == '+')
 				j++;
 			if (args[i][j] == '\0' || !ft_isdigit(args[i][j]))
 				return (0);
@@ -62,8 +55,6 @@ int	ft_args_checker(char **args, int size)
 		}
 		i++;
 	}
-	printf("end args_checker\n");
-	fflush(stdout);
 	return (1);
 }
 
@@ -76,7 +67,6 @@ int	ft_sort_checker(int *int_lst, int size)
 		i++;
 	if (i == size - 1)
 		return (0);
-	printf("sort_checker returns 1\n");
 	return (1);
 }
 
@@ -91,7 +81,6 @@ int	ft_repeat_checker(int *int_lst, int size, int nbr)
 			return (0);
 		i++;
 	}
-	printf("repeat_checker returns 1\n");
 	return (1);
 }
 
@@ -109,7 +98,7 @@ int	*ft_transform(char **args, int size)
 		return (0);
 	while (i < size)
 	{
-		// TODO Comprobar antes de añadir al array si el número no es int o ya está
+		//Comprobar antes de añadir al array si el número no es int o ya está
 		nbr = ft_atoi(args[i]);
 		if (nbr < -2147483648 || nbr > 2147483647
 			|| ft_repeat_checker(int_lst, j, nbr) == 0)
@@ -117,21 +106,15 @@ int	*ft_transform(char **args, int size)
 			free(int_lst);
 			return (0);
 		}
-		// Añadir número al array
-		printf("nbr = %lld\n", nbr);
 		int_lst[j] = nbr;
 		i++;
 		j++;
 	}
-	printf("ft_transform returns %d\n", j);
 	return (int_lst);
 }
 
 int	*ft_parser(char **args, int *size, int *int_lst)
 {
-	printf("init parser\n");
-	fflush(stdout);
-	int_lst = NULL;
 	if (ft_args_checker(args, *size) != 0)
 	{
 		int_lst = ft_transform(args, *size);
