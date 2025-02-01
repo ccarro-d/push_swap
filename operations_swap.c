@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_swap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:56:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/01/31 15:24:59 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2025/01/31 20:34:18 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,22 @@ void    swap(t_list **stack)
 
 void    sa(t_list **stack_a)
 {
-    sa(stack_a);
+    swap(stack_a);
     write(1, "sa\n", 3);
     return;
 }
 
 void    sb(t_list **stack_b)
 {
-    sa(stack_b);
+    swap(stack_b);
     write(1, "sb\n", 3);
     return;
 }
 
 void    ss(t_list **stack_a, t_list **stack_b)
 {
-    sa(stack_a);
-    sa(stack_b);
+    swap(stack_a);
+    swap(stack_b);
     write(1, "ss\n", 3);
     return;
 }

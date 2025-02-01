@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:56:33 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/01/31 15:25:02 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2025/01/31 20:08:10 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,19 @@ void    rotate(t_list **stack)
 void    ra(t_list **stack_a)
 {
     rotate(stack_a);
-    write(1, "ra\n", 3)
+    write(1, "ra\n", 3);
     return;
 }
 void    rb(t_list **stack_b)
 {
     rotate(stack_b);
-    write(1, "rb\n", 3)
+    write(1, "rb\n", 3);
     return;
 }
 void    rr(t_list **stack_a, t_list **stack_b)
 {
     rotate(stack_a);
     rotate(stack_b);
-    write(1, "rr\n", 3)
+    write(1, "rr\n", 3);
     return;    
 }

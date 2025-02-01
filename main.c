@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/01/31 15:22:51 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2025/01/31 20:39:52 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	main (int argc, char **argv)
 	write(1, "\n", 2);
 	ra(&data.stack_a);
 	ft_lstiter(data.stack_a, print_list);*/
-	printf("push_swap\n");
+	printf(BHMAG"\nPUSH_SWAP\n\n"END);
 	push_swap(&data.stack_a, data.size_a, &data.stack_b);
 	ft_lstiter(data.stack_a, print_list);
 	//Fin del programa

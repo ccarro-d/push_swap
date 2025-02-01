@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:32:24 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/01/31 15:22:48 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2025/01/31 20:41:26 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,18 @@ int		ft_args_checker(char **args, int size);
 void	fill_stack(int *int_lst, t_list **stack, int size);
 void	print_list(void *nodo); // comentar eventualmente
 //Operations
+void    swap(t_list **stack);
 void	sa(t_list **stack_a);
 void	sb(t_list **stack_b);
 void	ss(t_list **stack_a, t_list **stack_b);
+void    push(t_list **stack_a, t_list **stack_b);
 void    pa(t_list **stack_a, t_list **stack_b);
 void    pb(t_list **stack_a, t_list **stack_b);
+void    rotate(t_list **stack);
 void    ra(t_list **stack_a);
 void    rb(t_list **stack_b);
 void    rr(t_list **stack_a, t_list **stack_b);
+void    reverse_rotate(t_list **stack);
 void    rra(t_list **stack_a);
 void    rrb(t_list **stack_b);
 void    rrr(t_list **stack_a, t_list **stack_b);

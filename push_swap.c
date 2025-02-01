@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:36:04 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/01/31 15:22:45 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2025/02/01 12:06:34 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,6 @@ void	sort_three(t_list **stack_a)
     }
     return;
 }
-int    find_min_index(t_list **stack_a)
-{
-    t_list  *current;
-    int     min;
-    int     index;
-    int     min_index;
-
-    current = *stack_a;
-    min = *(int *)current->content;
-    index = 0;
-    min_index = index;
-    while (current)
-    {
-        if (*(int *)current->content < min)
-        {
-            min = *(int *)current->content;
-            min_index = index;
-        }
-        current = current->next;
-        index++;
-    }
-    return (min_index);
-}
 
 void    sort_four_five(t_list **stack_a, int size_a, t_list **stack_b)
 {
@@ -89,6 +66,31 @@ void    sort_four_five(t_list **stack_a, int size_a, t_list **stack_b)
     sort_three(stack_a);
     while (size_b--)
         pa(stack_a, stack_b);
+    return;
+}
+void    sort_one_hundred(t_list **stack_a, int size_a, t_list **stack_b)
+{
+    int *array;
+    int chunk_size;
+    int chunk_index;
+    int chunk_min;
+    int chunk_max;
+
+    array = stack_to_array(*stack_a, size_a);
+    if (!array)
+        return;
+    chunk_size = get_chunk_size(size_a);
+    return;
+    sort_array(array, size_a);
+    chunk_index = 0;
+    while (chunk_index < size_a / chunk_size)
+    {
+        chunk_min = get_chunk_min(array, size_a, chunk_index, chunk_size); 
+        chunk_max = chunk_min + chunk_size - 1;
+        chunk_index++;
+    }
+    
+
 }
 
 void	push_swap(t_list **stack_a, int size_a, t_list **stack_b)
@@ -97,11 +99,15 @@ void	push_swap(t_list **stack_a, int size_a, t_list **stack_b)
         sa(stack_a);
     else if (size_a == 3)
         sort_three(stack_a);
-    else if (size_a <= 5)
+    else if (size_a == 4 || size_a == 5)
         sort_four_five(stack_a, size_a, stack_b);
-    /*else if (stack_a <= 100)
-        sort_one_hundred(stack_a, stack_b);
-    else if (stack_a <= 500)
+    /*El algoritmo de la burbuja sería mejor que los chunks para 6-20 numeros?
+    else if (stack_a >=6 && stack_a <= 20)
+        sort_twenty(stack_a, stack_b);*/
+    else if (stack_a <= 100) //Algoritmo chunks
+        sort_one_hundred(stack_a, size_a, stack_b);
+    // ¿Podríamos usar los chunks hasta 500?
+    /*else if (stack_a <= 500) // Algoritmo radix
         sort_five_hundred(stack_a, stack_b);*/
     else
         return;
