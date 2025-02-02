@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/01 15:15:17 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2025/02/02 21:34:38 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*void	print_list(void *nodo) // comentar
+void	print_list(void *nodo) // comentar
 {
-	printf(BHGRN"%d\n"END, *((int *)nodo));
+	printf(BHGRN"  %d\n"END, *((int *)nodo));
 	(void)nodo;
 	return;
-}*/
+}
 
 int	*handle_input (char **args, int *size, int *int_lst)
 {
@@ -54,7 +54,7 @@ void	fill_stack(int *int_lst, t_list **stack, int size)
 		ft_lstadd_back(stack, stack_member);
 		i++;
 	}
-	free (int_lst);
+	//free (int_lst);
 	return;
 }
 
@@ -77,9 +77,12 @@ int	main (int argc, char **argv)
 	t_data	data;
 	int		*int_lst;
 	int		lst_size; // comentar?
-	int_lst = NULL;
+	
 	data.stack_a = NULL;
+	data.stack_b = NULL;
 	data.size_a = argc - 1; 
+	data.size_b = 0;
+	int_lst = NULL;
 	int_lst = handle_input(argv, &data.size_a, int_lst);
 	if (!int_lst)
 	{
@@ -98,12 +101,14 @@ int	main (int argc, char **argv)
 		write(2, "Error\n", 6);
 		return 1;
 	}
-	/*else // comentar?
-		ft_lstiter(data.stack_a, print_list);*/
-	//printf(BHMAG"\nPUSH_SWAP\n\n"END); //comentar
-	push_swap(&data.stack_a, data.size_a, &data.stack_b);
-	//write(1, "\n", 1); // comentar
-	//ft_lstiter(data.stack_a, print_list); //comentar
+	else // comentar?
+		ft_lstiter(data.stack_a, print_list);
+	data.op_count = 0;
+	printf(BHMAG"\nPUSH_SWAP\n\n"END); //comentar
+	push_swap(&data, int_lst);
+	write(1, "\n", 1); // comentar
+	printf("\nNÚMERO FINAL DE OPERACIONES = %d\n", data.op_count);
+	free (int_lst);
 	free_stack(&data.stack_a);
 	return (0);
 }

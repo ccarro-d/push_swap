@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_push.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:56:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/01 14:32:31 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:21:23 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,20 @@ void    push(t_list **stack_to, t_list **stack_from)
     return;
 }
 
-void    pa(t_list **stack_a, t_list **stack_b)
+void    pa(t_data *data)
 {
-    push(stack_a, stack_b);
+    push(&(data->stack_a), &(data->stack_b));
+    data->size_a++;
+    data->size_b--;
     write(1, "pa\n", 3);
     return;
 }
 
-void    pb(t_list **stack_a, t_list **stack_b)
+void    pb(t_data *data)
 {
-    push(stack_b, stack_a);
+    push(&(data->stack_b), &(data->stack_a));
+    data->size_a--;
+    data->size_b++;
     write(1, "pb\n", 3);
     return;
 }

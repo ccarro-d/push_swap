@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:36:04 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/01 15:06:20 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2025/02/02 21:36:19 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,72 +40,61 @@ void	sort_three(t_list **stack_a)
     return;
 }
 
-void    sort_four_five(t_list **stack_a, int size_a, t_list **stack_b)
+void    sort_four_five(t_data *data)
 {
-    int size_b;
     int min_index;
 
-    size_b = 0;
-    while (size_a > 3)
+    while (data->size_a > 3)
     {
-        min_index = find_min_index(stack_a);
-        if (min_index < size_a / 2)
+        min_index = find_min_index(&(data->stack_a));
+        if (min_index < data->size_a / 2)
         {
             while (min_index--)
-                ra(stack_a);
+                ra(&(data->stack_a));
         }
         else
         {
-            while (size_a > min_index++)
-                rra(stack_a);
+            while (data->size_a > min_index++)
+                rra(&(data->stack_a));
         }
-        pb(stack_a, stack_b); 
-        size_a--;
-        size_b++;
+        pb(data); 
     }
-    sort_three(stack_a);
-    while (size_b--)
-        pa(stack_a, stack_b);
+    sort_three(&(data->stack_a));
+    while (data->size_b)
+        pa(data);
     return;
 }
-/*void    sort_one_hundred(t_list **stack_a, int size_a, t_list **stack_b)
+
+void    sort_with_chunks(t_data *data, int *int_lst)
 {
-    int *array;
+    int total_size;
     int chunk_size;
-    int chunk_index;
-    int chunk_min;
-    int chunk_max;
 
-    array = stack_to_array(*stack_a, size_a);
-    if (!array)
-        return;
-    chunk_size = get_chunk_size(size_a);
-    return;
-    sort_array(array, size_a);
-    chunk_index = 0;
-    while (chunk_index < size_a / chunk_size)
-    {
-        chunk_min = get_chunk_min(array, size_a, chunk_index, chunk_size); 
-        chunk_max = chunk_min + chunk_size - 1;
-        chunk_index++;
-    }
-    
+    total_size = data->size_a;
+    chunk_size = get_chunk_size(total_size);
+    sort_array(int_lst, data->size_a);
+    bye_stack_a(data, int_lst, chunk_size, total_size);
+    printf("\nstack_b antes de devolverlo a stack_a\n");
+    write(1, "\n", 1);
+    ft_lstiter(data->stack_b, print_list); //comentar
+    printf("\npush desde stack_b a stack_a\n");
+    write(1, "\n", 1);
+    return_stack_a(data);
+    printf("\nnuevo orden stack_a\n");
+    write(1, "\n", 1);
+    ft_lstiter(data->stack_a, print_list); //comentar
+}
 
-}*/
-
-void	push_swap(t_list **stack_a, int size_a, t_list **stack_b)
+void	push_swap(t_data *data, int *int_lst)
 {
-    if (size_a == 2)
-        sa(stack_a);
-    else if (size_a == 3)
-        sort_three(stack_a);
-    else if (size_a == 4 || size_a == 5)
-        sort_four_five(stack_a, size_a, stack_b);
-    /*else if (stack_a <= 100) //Algoritmo chunks
-        sort_one_hundred(stack_a, size_a, stack_b);*/
-    // ¿Podríamos usar los chunks hasta 500?
-    /*else if (stack_a <= 500) // Algoritmo radix
-        sort_five_hundred(stack_a, stack_b);*/
+    if (data->size_a == 2)
+        sa(&(data->stack_a));
+    else if (data->size_a == 3)
+        sort_three(&(data->stack_a));
+    else if (data->size_a == 4 || data->size_a == 5)
+        sort_four_five(data);
+    else if (data->size_a <= 500)
+        sort_with_chunks(data, int_lst);
     else
         return;
 }
