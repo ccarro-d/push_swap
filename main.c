@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/03 21:09:13 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/03 21:26:08 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,13 +103,13 @@ int	main (int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	/*printf(BHMAG"\nASPECTO INICIAL DEL STACK\n\n"END); //comentar
-	ft_lstiter(data.stack_a, print_list); //comentar
-	printf(BHMAG"\nPUSH_SWAP\n\n"END); //comentar*/
+	//printf(BHMAG"\nASPECTO INICIAL DEL STACK\n\n"END);
+	//ft_lstiter(data.stack_a, print_list);
+	//printf(BHMAG"\nPUSH_SWAP\n\n"END);
 	push_swap(&data, int_lst);
-	/*printf(BHMAG"\nASPECTO FINAL DEL STACK\n\n"END); //comentar
-	ft_lstiter(data.stack_a, print_list); //comentar
-	printf("\nNÚMERO FINAL DE OPERACIONES = %d\n", data.op_count); //comentar*/
+	//printf(BHMAG"\nASPECTO FINAL DEL STACK\n\n"END);
+	//ft_lstiter(data.stack_a, print_list);
+	//printf("\nNÚMERO FINAL DE OPERACIONES = %d\n", data.op_count);
 	free (int_lst);
 	free_stack(&data.stack_a);
 	return (0);
