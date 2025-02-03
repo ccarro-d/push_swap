@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:56:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/02 14:36:05 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/03 11:46:53 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void    swap(t_list **stack)
 
 void    sa(t_list **stack_a)
 {
+    if (!*stack_a || !(*stack_a)->next)
+        return;
     swap(stack_a);
     write(1, "sa\n", 3);
     return;
@@ -36,6 +38,8 @@ void    sa(t_list **stack_a)
 
 void    sb(t_list **stack_b)
 {
+    if (!*stack_b || !(*stack_b)->next)
+        return;
     swap(stack_b);
     write(1, "sb\n", 3);
     return;

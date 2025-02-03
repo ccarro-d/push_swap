@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:32:24 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/02 21:33:03 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/03 12:17:27 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_data
 }	t_data;
 
 // Parser
+void	init_data(t_data *data, int argc);
 int		*handle_input (char **args, int *size, int *int_lst);
 int		*ft_parser(char **args, int *size, int *int_lst);
 int		*ft_parse_single(char **args, int *int_lst, int *size);
@@ -51,6 +52,7 @@ int		ft_repeat_checker(int *int_lst, int size, int nbr);
 int		ft_args_checker(char **args, int size);
 void	fill_stack(int *int_lst, t_list **stack, int size);
 void	print_list(void *nodo); // comentar eventualmente
+
 //Operations
 void    swap(t_list **stack);
 void	sa(t_list **stack_a);

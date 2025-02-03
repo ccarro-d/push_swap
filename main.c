@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/02 21:34:38 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/03 12:25:10 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@ void	print_list(void *nodo) // comentar
 	printf(BHGRN"  %d\n"END, *((int *)nodo));
 	(void)nodo;
 	return;
+}
+
+void	init_data(t_data *data, int argc)
+{
+    data->stack_a = NULL;
+    data->stack_b = NULL;
+    data->size_a = argc - 1;
+    data->size_b = 0;
+    data->op_count = 0;
 }
 
 int	*handle_input (char **args, int *size, int *int_lst)
@@ -45,7 +54,7 @@ void	fill_stack(int *int_lst, t_list **stack, int size)
     		return ;
 		}
 		*value = int_lst[i];
-		stack_member = ft_lstnew(value); // ¿Habría que castear value como void?
+		stack_member = ft_lstnew(value);
 		if (!stack_member)
 		{
 			free (int_lst);
@@ -54,13 +63,15 @@ void	fill_stack(int *int_lst, t_list **stack, int size)
 		ft_lstadd_back(stack, stack_member);
 		i++;
 	}
-	//free (int_lst);
 	return;
 }
 
 void	free_stack(t_list **stack)
 {
 	t_list *tmp;
+	
+	if (!stack || !*stack)
+		return;
 	while (*stack)
 	{
 		tmp = (*stack)->next;
@@ -68,46 +79,34 @@ void	free_stack(t_list **stack)
 		free(*stack);
 		*stack = tmp;
 	}
-	// ¿No hay que hacer "free (stack)"?
-	// ¿No hay qye hacer manejo de errores si "!stack" o "!*stack"?
 }
 
 int	main (int argc, char **argv)
 {
 	t_data	data;
 	int		*int_lst;
-	int		lst_size; // comentar?
+	int		lst_size;
 	
-	data.stack_a = NULL;
-	data.stack_b = NULL;
-	data.size_a = argc - 1; 
-	data.size_b = 0;
+	init_data(&data, argc);
 	int_lst = NULL;
 	int_lst = handle_input(argv, &data.size_a, int_lst);
 	if (!int_lst)
 	{
 		write(2, "Error\n", 6);
-		return 1;
+		return (1);
 	}
 	fill_stack (int_lst, &data.stack_a, data.size_a);
-	if (!data.stack_a)
+	lst_size = ft_lstsize(data.stack_a);
+	if (!data.stack_a || lst_size != data.size_a)
 	{
 		write(2, "Error\n", 6);
-		return 1;
+		return (1);
 	}
-	lst_size = ft_lstsize(data.stack_a); // comentar?
-	if (lst_size != data.size_a)
-	{
-		write(2, "Error\n", 6);
-		return 1;
-	}
-	else // comentar?
-		ft_lstiter(data.stack_a, print_list);
-	data.op_count = 0;
+	ft_lstiter(data.stack_a, print_list); //comentar
 	printf(BHMAG"\nPUSH_SWAP\n\n"END); //comentar
 	push_swap(&data, int_lst);
 	write(1, "\n", 1); // comentar
-	printf("\nNÚMERO FINAL DE OPERACIONES = %d\n", data.op_count);
+	printf("\nNÚMERO FINAL DE OPERACIONES = %d\n", data.op_count); //comentar
 	free (int_lst);
 	free_stack(&data.stack_a);
 	return (0);

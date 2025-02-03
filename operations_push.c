@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:56:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/02 17:21:23 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/03 11:48:15 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void    push(t_list **stack_to, t_list **stack_from)
 
 void    pa(t_data *data)
 {
+    if (!data->stack_b)
+        return;
     push(&(data->stack_a), &(data->stack_b));
     data->size_a++;
     data->size_b--;
@@ -35,6 +37,8 @@ void    pa(t_data *data)
 
 void    pb(t_data *data)
 {
+    if (!data->stack_a)
+        return;
     push(&(data->stack_b), &(data->stack_a));
     data->size_a--;
     data->size_b++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_revrotate.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:55:53 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/01/31 15:25:04 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:49:27 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,16 @@ void    reverse_rotate(t_list **stack)
 
 void    rra(t_list **stack_a)
 {
+    if (!*stack_a || !(*stack_a)->next)
+        return;
     reverse_rotate(stack_a);
     write(1, "rra\n", 4);
     return;
 }
 void    rrb(t_list **stack_b)
 {
+    if (!*stack_b || !(*stack_b)->next)
+        return;
     reverse_rotate(stack_b);
     write(1, "rrb\n", 4);
     return;

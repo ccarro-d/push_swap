@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 12:08:56 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/02 21:16:05 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/03 11:53:38 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int get_chunk_size(int size)
         chunks_num = 5;
     else
         chunks_num = 11;
-    chunk_size = (size + chunks_num + 1) / chunks_num;
+    chunk_size = (size + chunks_num - 1) / chunks_num;
     return (chunk_size);
 }
 
@@ -145,6 +145,7 @@ int get_max_index(t_list *stack_b) //Se utiliza t_list *stack porque la función
     t_list  *tmp;
 
     index = 0;
+    max_index = index;
     if (!stack_b)
         return (0);
     max_value = *(int *)stack_b->content;
