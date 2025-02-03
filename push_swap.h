@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:32:24 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/03 12:54:36 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/03 20:58:26 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # define BHMAG "\e[1;95m"
 # define BHCYN "\e[1;96m"
 # define BHWHT "\e[1;97m"
-//# define END   "\e[0m"
-# define END   "\x1b[0m"
+# define END   "\e[0m"
+
 
 #include<unistd.h>
 #include<stdio.h>
@@ -44,14 +44,13 @@ typedef struct s_data
 // Parser
 void	init_data(t_data *data, int argc);
 int		*handle_input (char **args, int *size, int *int_lst);
-int		*ft_parser(char **args, int *size, int *int_lst);
-int		*ft_parse_single(char **args, int *int_lst, int *size);
-int		*ft_transform(char **args, int size);
-int		ft_sort_checker(int *int_lst, int size);
-int		ft_repeat_checker(int *int_lst, int size, int nbr);
+int		*parse_single(char **args, int *int_lst, int *size);
+int		*parser(char **args, int *size, int *int_lst);
 int		ft_args_checker(char **args, int size);
+int		*transform(char **args, int size);
+int		ft_repeat_checker(int *int_lst, int size, int nbr);
 void	fill_stack(int *int_lst, t_list **stack, int size);
-void	print_list(void *nodo); // comentar eventualmente
+//void	print_list(void *nodo);
 
 //Operations
 void    swap(t_list **stack);
@@ -72,9 +71,10 @@ void    rrr(t_data *data);
 
 //Push_swap
 void	push_swap(t_data *data, int *int_lst);
+int		sort_checker(int *int_lst, int size);
 void	sort_three(t_data *data);
-int		find_min_index(t_list **stack_a);
 void    sort_four_five(t_data *data);
+int		find_min_index(t_list **stack_a);
 void    sort_with_chunks(t_data *data, int *int_lst);
 int		*stack_to_array(t_list *stack, int size);
 void    sort_array(int *int_lst, int size_a);

@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:36:04 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/03 12:54:08 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/03 20:54:29 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,16 @@ void    sort_with_chunks(t_data *data, int *int_lst)
 
 void	push_swap(t_data *data, int *int_lst)
 {
-    if (data->size_a == 2)
+    if (data->size_a < 2)
+        return;
+    else if (sort_checker(int_lst, data->size_a) == 0)
+        return;
+    else if (data->size_a == 2)
         sa(data);
     else if (data->size_a == 3)
         sort_three(data);
     else if (data->size_a == 4 || data->size_a == 5)
         sort_four_five(data);
-    else if (data->size_a <= 500)
-        sort_with_chunks(data, int_lst);
     else
-        return;
+        sort_with_chunks(data, int_lst);
 }

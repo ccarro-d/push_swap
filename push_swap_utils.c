@@ -6,11 +6,23 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 12:08:56 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/03 13:01:40 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/03 20:38:17 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	sort_checker(int *int_lst, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size - 1 && int_lst[i] < int_lst[i + 1])
+		i++;
+	if (i == size - 1)
+		return (0);
+	return (1);
+}
 
 int    find_min_index(t_list **stack_a)
 {

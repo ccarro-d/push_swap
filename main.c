@@ -6,18 +6,18 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/03 13:03:07 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/03 21:09:13 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_list(void *nodo) // comentar
+/*void	print_list(void *nodo) // comentar
 {
 	printf(BHGRN"  %d\n"END, *((int *)nodo));
 	(void)nodo;
 	return;
-}
+}*/
 
 void	init_data(t_data *data, int argc)
 {
@@ -30,24 +30,23 @@ void	init_data(t_data *data, int argc)
 
 int	*handle_input (char **args, int *size, int *int_lst)
 {
-	if (*size < 1)
-		return 0;
-	else if (*size == 1)
-		int_lst = ft_parse_single(&args[1], int_lst, size);
+	if (*size == 1)
+		int_lst = parse_single(&args[1], int_lst, size);
 	else
-		int_lst = ft_parser(&args[1], size, int_lst);
+		int_lst = parser(&args[1], size, int_lst);
 	return (int_lst);
 }
 
 void	fill_stack(int *int_lst, t_list **stack, int size)
 {
 	int		i;
+	int		*value;
 	t_list	*stack_member;
 
 	i = 0;
 	while (i < size)
 	{
-		int *value = malloc(sizeof(int));
+		value = ft_calloc(1, sizeof(int));
 		if (!value)
 		{
     		free(int_lst);
@@ -87,6 +86,8 @@ int	main (int argc, char **argv)
 	int		*int_lst;
 	int		lst_size;
 	
+	if (argc < 2)
+		return (0);
 	init_data(&data, argc);
 	int_lst = NULL;
 	int_lst = handle_input(argv, &data.size_a, int_lst);
@@ -106,8 +107,7 @@ int	main (int argc, char **argv)
 	ft_lstiter(data.stack_a, print_list); //comentar
 	printf(BHMAG"\nPUSH_SWAP\n\n"END); //comentar*/
 	push_swap(&data, int_lst);
-	/*write(1, "\n", 1); // comentar
-	printf(BHMAG"\nASPECTO FINAL DEL STACK\n\n"END); //comentar
+	/*printf(BHMAG"\nASPECTO FINAL DEL STACK\n\n"END); //comentar
 	ft_lstiter(data.stack_a, print_list); //comentar
 	printf("\nNÚMERO FINAL DE OPERACIONES = %d\n", data.op_count); //comentar*/
 	free (int_lst);
