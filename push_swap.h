@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:32:24 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/03 12:17:27 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/03 12:54:36 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,29 +55,28 @@ void	print_list(void *nodo); // comentar eventualmente
 
 //Operations
 void    swap(t_list **stack);
-void	sa(t_list **stack_a);
-void	sb(t_list **stack_b);
-void	ss(t_list **stack_a, t_list **stack_b);
+void	sa(t_data *data);
+void	sb(t_data *data);
+void	ss(t_data *data);
 void    push(t_list **stack_a, t_list **stack_b);
 void    pa(t_data *data);
 void    pb(t_data *data);
 void    rotate(t_list **stack);
-void    ra(t_list **stack_a);
-void    rb(t_list **stack_b);
-void    rr(t_list **stack_a, t_list **stack_b);
+void    ra(t_data *data);
+void    rb(t_data *data);
+void    rr(t_data *data);
 void    reverse_rotate(t_list **stack);
-void    rra(t_list **stack_a);
-void    rrb(t_list **stack_b);
-void    rrr(t_list **stack_a, t_list **stack_b);
+void    rra(t_data *data);
+void    rrb(t_data *data);
+void    rrr(t_data *data);
 
 //Push_swap
 void	push_swap(t_data *data, int *int_lst);
-void	sort_three(t_list **stack_a);
+void	sort_three(t_data *data);
 int		find_min_index(t_list **stack_a);
 void    sort_four_five(t_data *data);
 void    sort_with_chunks(t_data *data, int *int_lst);
 int		*stack_to_array(t_list *stack, int size);
-int		get_chunk_size(int size);
 void    sort_array(int *int_lst, int size_a);
 int		get_value_index(int *int_lst, int total_size, int value);
 int		to_stack_b(t_data *data, int value_index, int chunk_min, int chunk_max);

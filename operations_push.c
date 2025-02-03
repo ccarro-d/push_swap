@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:56:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/03 11:48:15 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/03 12:45:09 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void    pa(t_data *data)
     data->size_a++;
     data->size_b--;
     write(1, "pa\n", 3);
+    data->op_count++;
     return;
 }
 
@@ -43,5 +44,6 @@ void    pb(t_data *data)
     data->size_a--;
     data->size_b++;
     write(1, "pb\n", 3);
+    data->op_count++;
     return;
 }

@@ -11,7 +11,7 @@ SRC_DIR = src/
 # Sources
 SRC = ft_parser.c main.c operations_push.c operations_swap.c \
 	  operations_rotate.c operations_revrotate.c push_swap.c \
-	  push_swap_utils.c
+	  push_swap_utils.c push_swap_utils_chunks.c
 
 OBJS =	$(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:56:33 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/03 11:48:55 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/03 12:45:20 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,29 @@ void    rotate(t_list **stack)
     return;
 }
 
-void    ra(t_list **stack_a)
+void    ra(t_data *data)
 {
-    if (!*stack_a || !(*stack_a)->next)
+    if (!data->stack_a || !data->stack_a->next)
         return;
-    rotate(stack_a);
+    rotate(&(data->stack_a));
     write(1, "ra\n", 3);
+    data->op_count++;
     return;
 }
-void    rb(t_list **stack_b)
+void    rb(t_data *data)
 {
-    if (!*stack_b || !(*stack_b)->next)
+    if (!data->stack_b || !data->stack_b->next)
         return;
-    rotate(stack_b);
+    rotate(&(data->stack_b));
     write(1, "rb\n", 3);
+    data->op_count++;
     return;
 }
-void    rr(t_list **stack_a, t_list **stack_b)
+void    rr(t_data *data)
 {
-    rotate(stack_a);
-    rotate(stack_b);
+    rotate(&(data->stack_a));
+    rotate(&(data->stack_b));
     write(1, "rr\n", 3);
+    data->op_count++;
     return;    
 }

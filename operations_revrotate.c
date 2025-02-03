@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:55:53 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/03 11:49:27 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/03 12:45:29 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,29 @@ void    reverse_rotate(t_list **stack)
     return;
 }
 
-void    rra(t_list **stack_a)
+void    rra(t_data *data)
 {
-    if (!*stack_a || !(*stack_a)->next)
+    if (!data->stack_a || !data->stack_a->next)
         return;
-    reverse_rotate(stack_a);
+    reverse_rotate(&(data->stack_a));
     write(1, "rra\n", 4);
+    data->op_count++;
     return;
 }
-void    rrb(t_list **stack_b)
+void    rrb(t_data *data)
 {
-    if (!*stack_b || !(*stack_b)->next)
+    if (!data->stack_b || !data->stack_b->next)
         return;
-    reverse_rotate(stack_b);
+    reverse_rotate(&(data->stack_b));
     write(1, "rrb\n", 4);
+    data->op_count++;
     return;
 }
-void    rrr(t_list **stack_a, t_list **stack_b)
+void    rrr(t_data *data)
 {
-    reverse_rotate(stack_a);
-    reverse_rotate(stack_b);
+    reverse_rotate(&(data->stack_a));
+    reverse_rotate(&(data->stack_b));
     write(1, "rrr\n", 4);
+    data->op_count++;
     return;    
 }

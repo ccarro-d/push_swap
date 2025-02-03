@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:56:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/03 11:46:53 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/03 12:44:50 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,31 @@ void    swap(t_list **stack)
     return;
 }
 
-void    sa(t_list **stack_a)
+void    sa(t_data *data)
 {
-    if (!*stack_a || !(*stack_a)->next)
+    if (!data->stack_a || !data->stack_a->next)
         return;
-    swap(stack_a);
+    swap(&(data->stack_a));
     write(1, "sa\n", 3);
+    data->op_count++;
     return;
 }
 
-void    sb(t_list **stack_b)
+void    sb(t_data *data)
 {
-    if (!*stack_b || !(*stack_b)->next)
+    if (!data->stack_b || !data->stack_b->next)
         return;
-    swap(stack_b);
+    swap(&(data->stack_b));
     write(1, "sb\n", 3);
+    data->op_count++;
     return;
 }
 
-void    ss(t_list **stack_a, t_list **stack_b)
+void    ss(t_data *data)
 {
-    swap(stack_a);
-    swap(stack_b);
+    swap(&(data->stack_a));
+    swap(&(data->stack_b));
     write(1, "ss\n", 3);
+    data->op_count++;
     return;
 }
