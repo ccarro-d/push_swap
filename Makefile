@@ -6,7 +6,6 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
 LIBFT_DIR = libft/
-SRC_DIR = src/
 
 # Sources
 SRC = parser.c main.c operations_push.c operations_swap.c \
@@ -21,6 +20,9 @@ INCLUDE = -L ./libft -lft
 $(NAME):$(OBJS)
 	make -C $(LIBFT_DIR)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCLUDE)
+
+# Recompile object files if push_swap.h changes  
+$(OBJS): push_swap.h
 
 # Default target for compilation
 all: $(NAME)
