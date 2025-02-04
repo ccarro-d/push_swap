@@ -3,32 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/03 21:26:08 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/04 20:59:02 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*void	print_list(void *nodo) // comentar
+/*void	print_list(void *node) // comentar
 {
-	printf(BHGRN"  %d\n"END, *((int *)nodo));
-	(void)nodo;
-	return;
+	printf(BHGRN"  %d\n"END, *((int *)node));
+	(void)node;
+	return ;
 }*/
 
 void	init_data(t_data *data, int argc)
 {
-    data->stack_a = NULL;
-    data->stack_b = NULL;
-    data->size_a = argc - 1;
-    data->size_b = 0;
-    data->op_count = 0;
+	data->stack_a = NULL;
+	data->stack_b = NULL;
+	data->size_a = argc - 1;
+	data->size_b = 0;
+	data->op_count = 0;
 }
 
-int	*handle_input (char **args, int *size, int *int_lst)
+int	*handle_input(char **args, int *size, int *int_lst)
 {
 	if (*size == 1)
 		int_lst = parse_single(&args[1], int_lst, size);
@@ -49,43 +49,43 @@ void	fill_stack(int *int_lst, t_list **stack, int size)
 		value = ft_calloc(1, sizeof(int));
 		if (!value)
 		{
-    		free(int_lst);
-    		return ;
+			free(int_lst);
+			return ;
 		}
 		*value = int_lst[i];
 		stack_member = ft_lstnew(value);
 		if (!stack_member)
 		{
-			free (int_lst);
+			free(int_lst);
 			return ;
 		}
 		ft_lstadd_back(stack, stack_member);
 		i++;
 	}
-	return;
+	return ;
 }
 
 void	free_stack(t_list **stack)
 {
-	t_list *tmp;
-	
+	t_list	*tmp;
+
 	if (!stack || !*stack)
-		return;
+		return ;
 	while (*stack)
 	{
 		tmp = (*stack)->next;
-		free ((*stack)->content);
+		free((*stack)->content);
 		free(*stack);
 		*stack = tmp;
 	}
 }
 
-int	main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_data	data;
 	int		*int_lst;
 	int		lst_size;
-	
+
 	if (argc < 2)
 		return (0);
 	init_data(&data, argc);
@@ -96,21 +96,21 @@ int	main (int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	fill_stack (int_lst, &data.stack_a, data.size_a);
+	fill_stack(int_lst, &data.stack_a, data.size_a);
 	lst_size = ft_lstsize(data.stack_a);
 	if (!data.stack_a || lst_size != data.size_a)
 	{
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	//printf(BHMAG"\nASPECTO INICIAL DEL STACK\n\n"END);
-	//ft_lstiter(data.stack_a, print_list);
-	//printf(BHMAG"\nPUSH_SWAP\n\n"END);
+	// printf(BHMAG"\nASPECTO INICIAL DEL STACK\n\n"END);
+	// ft_lstiter(data.stack_a, print_list);
+	// printf(BHMAG"\nPUSH_SWAP\n\n"END);
 	push_swap(&data, int_lst);
-	//printf(BHMAG"\nASPECTO FINAL DEL STACK\n\n"END);
-	//ft_lstiter(data.stack_a, print_list);
-	//printf("\nNÚMERO FINAL DE OPERACIONES = %d\n", data.op_count);
-	free (int_lst);
+	// printf(BHMAG"\nASPECTO FINAL DEL STACK\n\n"END);
+	// ft_lstiter(data.stack_a, print_list);
+	// printf("\nNÚMERO FINAL DE OPERACIONES = %d\n", data.op_count);
+	free(int_lst);
 	free_stack(&data.stack_a);
 	return (0);
 }
