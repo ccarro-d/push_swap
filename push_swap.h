@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:32:24 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/04 20:59:48 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:21:48 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@
 
 # include "libft/libft.h"
 # include <limits.h>
-# include <stdarg.h>
-# include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
 # include <unistd.h>
 
 typedef struct s_data
@@ -45,9 +42,9 @@ void		init_data(t_data *data, int argc);
 int			*handle_input(char **args, int *size, int *int_lst);
 int			*parse_single(char **args, int *int_lst, int *size);
 int			*parser(char **args, int *size, int *int_lst);
-int			ft_args_checker(char **args, int size);
+int			args_checker(char **args, int size);
 int			*transform(char **args, int size);
-int			ft_repeat_checker(int *int_lst, int size, int nbr);
+int			repeat_checker(int *int_lst, int size, int nbr);
 void		fill_stack(int *int_lst, t_list **stack, int size);
 //void	print_list(void *node);
 
@@ -68,7 +65,7 @@ void		rra(t_data *data);
 void		rrb(t_data *data);
 void		rrr(t_data *data);
 
-// Push_swap
+// Sorting
 void		push_swap(t_data *data, int *int_lst);
 int			sort_checker(int *int_lst, int size);
 void		sort_three(t_data *data);

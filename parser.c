@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:34:49 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/04 20:00:13 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:29:07 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	*transform(char **args, int size)
 	{
 		// Comprobar antes de añadir al array si el número no es int o ya está
 		nbr = ft_atoi(args[i]);
-		if (nbr < -2147483648 || nbr > 2147483647 || repeat_checker(int_lst, j,
+		if (nbr < INT_MIN || nbr > INT_MAX || repeat_checker(int_lst, j,
 				nbr) == 0)
 		{
 			free(int_lst);
