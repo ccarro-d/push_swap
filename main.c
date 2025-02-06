@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/04 20:59:02 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2025/02/06 21:54:20 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,21 @@ int	*handle_input(char **args, int *size, int *int_lst)
 	return (int_lst);
 }
 
+void	free_stack(t_list **stack)
+{
+	t_list	*tmp;
+
+	if (!stack || !*stack)
+		return ;
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free((*stack)->content);
+		free(*stack);
+		*stack = tmp;
+	}
+}
+
 void	fill_stack(int *int_lst, t_list **stack, int size)
 {
 	int		i;
@@ -57,26 +72,12 @@ void	fill_stack(int *int_lst, t_list **stack, int size)
 		if (!stack_member)
 		{
 			free(int_lst);
+			free(value);
+			free_stack(stack);
 			return ;
 		}
 		ft_lstadd_back(stack, stack_member);
 		i++;
-	}
-	return ;
-}
-
-void	free_stack(t_list **stack)
-{
-	t_list	*tmp;
-
-	if (!stack || !*stack)
-		return ;
-	while (*stack)
-	{
-		tmp = (*stack)->next;
-		free((*stack)->content);
-		free(*stack);
-		*stack = tmp;
 	}
 }
 
