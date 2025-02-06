@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/06 21:54:20 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2025/02/07 00:25:21 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,6 @@ int	main(int argc, char **argv)
 	// printf("\nNÚMERO FINAL DE OPERACIONES = %d\n", data.op_count);
 	free(int_lst);
 	free_stack(&data.stack_a);
+	free_stack(&data.stack_b); // Nice to have
 	return (0);
 }
