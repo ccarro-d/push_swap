@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/07 02:22:33 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/07 17:39:12 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	fill_stack(int_lst, &data.stack_a, data.size_a);
-	if	(!data.stack_a || ft_lstsize(data.stack_a) != data.size_a)
+	if (!data.stack_a || ft_lstsize(data.stack_a) != data.size_a)
 	{
 		free(int_lst);
 		write(2, "Error\n", 6);
