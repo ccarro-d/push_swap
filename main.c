@@ -6,7 +6,7 @@
 /*   By: cesar <cesar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:08:20 by ccarro-d          #+#    #+#             */
-/*   Updated: 2025/02/07 00:25:21 by cesar            ###   ########.fr       */
+/*   Updated: 2025/02/07 01:58:09 by cesar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,11 @@ void	fill_stack(int *int_lst, t_list **stack, int size)
 	{
 		value = ft_calloc(1, sizeof(int));
 		if (!value)
-		{
-			free(int_lst);
 			return ;
-		}
 		*value = int_lst[i];
 		stack_member = ft_lstnew(value);
 		if (!stack_member)
 		{
-			free(int_lst);
 			free(value);
 			free_stack(stack);
 			return ;
@@ -79,13 +75,13 @@ void	fill_stack(int *int_lst, t_list **stack, int size)
 		ft_lstadd_back(stack, stack_member);
 		i++;
 	}
+	return ;
 }
 
 int	main(int argc, char **argv)
 {
 	t_data	data;
 	int		*int_lst;
-	int		lst_size;
 
 	if (argc < 2)
 		return (0);
@@ -98,9 +94,9 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	fill_stack(int_lst, &data.stack_a, data.size_a);
-	lst_size = ft_lstsize(data.stack_a);
-	if (!data.stack_a || lst_size != data.size_a)
+	if	(!data.stack_a || ft_lstsize(data.stack_a) != data.size_a)
 	{
+		free(int_lst);
 		write(2, "Error\n", 6);
 		return (1);
 	}
@@ -113,6 +109,6 @@ int	main(int argc, char **argv)
 	// printf("\nNÚMERO FINAL DE OPERACIONES = %d\n", data.op_count);
 	free(int_lst);
 	free_stack(&data.stack_a);
-	free_stack(&data.stack_b); // Nice to have
+	free_stack(&data.stack_b);
 	return (0);
 }
