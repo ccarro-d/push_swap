@@ -26,7 +26,7 @@ INCLUDE = libft.h
 $(NAME):$(OBJS)	$(INCLUDE)
 	ar -rsc	$(NAME)	$(OBJS)
 
-# Recompile object files if push_swap.h changes  
+# Recompile object files if libft.h changes  
 $(OBJS): libft.h
 
 # Default target for compilation
